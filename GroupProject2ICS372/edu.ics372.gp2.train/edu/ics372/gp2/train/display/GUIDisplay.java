@@ -18,7 +18,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	private GUIButton doorObstructing;
 	private GUIButton stationReached;
 	private GUIButton stationReaching;
-	private Text trainStatus = new Text("train Accelerating");
+	private Text trainStatus = new Text("Train Accelerating");
 	private Text doorStatus = new Text("Door Closed");
 
 	/**
@@ -26,9 +26,9 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		doorObstructing = new DoorObstructingButton("door obstructing");
-		stationReached = new StationReachedButton("station reached");
-		stationReaching = new StationReachingButton("station reaching");
+		doorObstructing = new DoorObstructingButton("Door Obstructing");
+		stationReached = new StationReachedButton("Station Reached");
+		stationReaching = new StationReachingButton("Station Reaching");
 		GridPane pane = new GridPane();
 		pane.setHgap(10);
 		pane.setVgap(10);
@@ -52,6 +52,33 @@ public class GUIDisplay extends Application implements TrainDisplay {
 				System.exit(0);
 			}
 		});
+	}
+
+	/**
+	 * show remaining time
+	 */
+	@Override
+	public void showTimeLeft(int time) {
+		// TODO Auto-generated method stub
+		trainStatus.setText("" + time);
+	}
+
+	/**
+	 * Show current train Status
+	 */
+	@Override
+	public void showStatus(String text) {
+		// TODO Auto-generated method stub
+		trainStatus.setText(text);
+	}
+
+	/**
+	 * Show current door Status
+	 */
+	@Override
+	public void showDoorStatus(String text) {
+		// TODO Auto-generated method stub
+		doorStatus.setText(text);
 	}
 
 }
