@@ -1,35 +1,43 @@
 package edu.ics372.gp2.train.display;
 
+import edu.ics372.gp2.train.buttons.DoorObstructingButton;
+import edu.ics372.gp2.train.buttons.GUIButton;
+import edu.ics372.gp2.train.buttons.StationReachedButton;
+import edu.ics372.gp2.train.buttons.StationReachingButton;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class GUIDisplay extends Application implements TrainDisplay {
 	// Instance Variables
-	
+	private GUIButton doorObstructing;
+	private GUIButton stationReached;
+	private GUIButton stationReaching;
+	private Text trainStatus = new Text("train Accelerating");
+	private Text doorStatus = new Text("Door Closed");
+
 	/**
 	 * Sets up the interface
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		doorCloser = new DoorCloseButton("close door");
-//		doorOpener = new DoorOpenButton("open door");
-//		cookButton = new CookButton("cook");
+		doorObstructing = new DoorObstructingButton("door obstructing");
+		stationReached = new StationReachedButton("station reached");
+		stationReaching = new StationReachingButton("station reaching");
 		GridPane pane = new GridPane();
 		pane.setHgap(10);
 		pane.setVgap(10);
 		pane.setPadding(new Insets(10, 10, 10, 10));
-//		pane.add(doorStatus, 0, 0);
-//		pane.add(lightStatus, 1, 0);
-//		pane.add(timerValue, 2, 0);
-//		pane.add(cookingStatus, 3, 0);		commented all of this out just to keep a reference
-//		pane.add(doorCloser, 4, 0);
-//		pane.add(doorOpener, 5, 0);
-//		pane.add(cookButton, 6, 0);
+		pane.add(trainStatus, 0, 0);
+		pane.add(doorStatus, 1, 0);
+		pane.add(stationReaching, 2, 0);
+		pane.add(stationReached, 3, 0);
+		pane.add(doorObstructing, 4, 0);
 //		showDoorClosed();
 //		showLightOff();
 //		showTimeLeft(0);

@@ -4,26 +4,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- *
- * @author Brahma Dathan and Sarnath Ramnath
- * @Copyright (c) 2010
-
- * Redistribution and use with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - the use is for academic purpose only
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   - Neither the name of Brahma Dathan or Sarnath Ramnath
- *     may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * The authors do not make any claims regarding the correctness of the code in this module
- * and are not responsible for any loss or damage resulting from its use.
- */
-
-/**
  * Implements a clock as a Runnable. An object adapter that uses
  * PropertyChangeSupport to implement the Observable part of the Observer
  * pattern.
@@ -57,7 +37,7 @@ public class Clock implements Runnable {
 	 */
 	private Clock() {
 		thread.start();
-	}
+	} // end Clock()
 
 	/**
 	 * To get the instance
@@ -69,7 +49,7 @@ public class Clock implements Runnable {
 			clock = new Clock();
 		}
 		return clock;
-	}
+	} // end getInstance()
 
 	/**
 	 * Infinite loop to generate the clock ticks Notify all users when clock ticks
@@ -84,6 +64,6 @@ public class Clock implements Runnable {
 			}
 		} catch (InterruptedException ie) {
 		}
-	}
+	} // end run()
 
 }
