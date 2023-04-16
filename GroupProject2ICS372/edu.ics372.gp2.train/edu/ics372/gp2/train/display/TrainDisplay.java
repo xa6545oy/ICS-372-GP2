@@ -9,15 +9,10 @@ public interface TrainDisplay {
 	/*
 	 * indicate train current status
 	 */
-	public void showStatus(String text);
+	public void showTrainStatus(String text);
 
 	/*
 	 * indicate door current status
 	 */
 	public void showDoorStatus(String text);
-	
-	/*
-	 * indicate train decelerating
-	 */
-	public void showTrainDecelerating();
 }

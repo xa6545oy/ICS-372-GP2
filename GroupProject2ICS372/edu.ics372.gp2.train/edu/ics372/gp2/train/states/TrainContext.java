@@ -64,7 +64,7 @@ public class TrainContext {
 	}
 
 	public void showTrainStatus(String text) {
-		trainDisplay.showStatus(text);
+		trainDisplay.showTrainStatus(text);
 	}
 
 	public void showDoorStatus(String text) {
@@ -72,7 +72,7 @@ public class TrainContext {
 	}
 	
 	/*
-	 * StationReaching button is pressed. Invokes the onStationReaching() method to the
+	 * Station Reaching button is pressed. Invokes the onStationReaching() method in the
 	 * current state to transition to another state
 	 */
 	public void stationReaching() {
@@ -80,8 +80,27 @@ public class TrainContext {
 		
 	}
 	
+	/*
+	 * Changes the display to show that the train is decelerating
+	 */
 	public void showTrainDecelerating() {
-		trainDisplay.showTrainDecelerating();
+		trainDisplay.showTrainStatus("Train Decelerating");
+	}
+	
+	/*
+	 * Station Reached button is pressed. Invokes the onStationReached() method in the
+	 * current state to transition to another state
+	 */
+	public void onStationReached() {
+		currentState.onStationReached();
+		//trainDisplay.showTrainStopped();
+	}
+	
+	/*
+	 * Changes the display to show that the train is stopped
+	 */
+	public void showTrainStopped() {
+		trainDisplay.showTrainStatus("Train Stopped");
 	}
 
 }

@@ -27,7 +27,7 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void onStationReached() {
-		TrainContext.getInstance().changeState(Stopped.getInstance());
+		TrainContext.getInstance().changeState(StoppedState.getInstance());
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void exit() {
-		TrainContext.getInstance().showTrainStatus("Train Deccelerating");
+		
 	}
 
 	@Override

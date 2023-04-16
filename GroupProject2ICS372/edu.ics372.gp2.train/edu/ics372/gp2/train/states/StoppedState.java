@@ -3,15 +3,15 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
-public class Stopped extends TrainState implements Notifiable {
+public class StoppedState extends TrainState implements Notifiable {
 
-	private static Stopped instance;
+	private static StoppedState instance;
 	private Timer timer;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private Stopped() {
+	private StoppedState() {
 		instance = this;
 	}
 
@@ -20,9 +20,9 @@ public class Stopped extends TrainState implements Notifiable {
 	 * 
 	 * @return the instance
 	 */
-	public static Stopped getInstance() {
+	public static StoppedState getInstance() {
 		if (instance == null) {
-			instance = new Stopped();
+			instance = new StoppedState();
 		}
 		return instance;
 	} // end getInstance()
@@ -40,20 +40,16 @@ public class Stopped extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Entering state
+	 * 
 	 */
 	@Override
 	public void enter() {
-		// TODO Auto-generated method stub
-		TrainContext.getInstance().showTrainStatus("Train Stopped!");
-		timer = new Timer(this, 1);
-
+		TrainContext.getInstance().showTrainStopped();
 	}
 
 	@Override
 	public void exit() {
-		// TODO Auto-generated method stub
-		TrainContext.getInstance().showTrainStatus("Train Stopped!");
+		
 
 	}
 

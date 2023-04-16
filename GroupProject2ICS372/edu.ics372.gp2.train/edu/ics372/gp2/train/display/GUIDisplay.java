@@ -67,9 +67,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 * Show current train Status
 	 */
 	@Override
-	public void showStatus(String text) {
-		System.out.println(text);
-		//trainStatus.setText(text);
+	public void showTrainStatus(String text) {
+		trainStatus.setText(text);
 	}
 
 	/**
@@ -78,14 +77,6 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	@Override
 	public void showDoorStatus(String text) {
 		doorStatus.setText(text);
-	}
-	
-	/*
-	 * Show train decelerating status
-	 */
-	@Override
-	public void showTrainDecelerating() {
-		trainStatus.setText("Train Decelerating");
 	}
 
 }
