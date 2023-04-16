@@ -2,15 +2,15 @@ package edu.ics372.gp2.train.states;
 
 import edu.ics372.gp2.train.timer.Notifiable;
 
-public class Decelerating extends TrainState implements Notifiable {
-	private static Decelerating instance;
+public class DeceleratingState extends TrainState implements Notifiable {
+	private static DeceleratingState instance;
 
 	/**
 	 * create the instance and then return the instance
 	 */
-	public static Decelerating getInstance() {
+	public static DeceleratingState getInstance() {
 		if (instance == null) {
-			instance = new Decelerating();
+			instance = new DeceleratingState();
 		}
 		return instance;
 	}
@@ -18,7 +18,7 @@ public class Decelerating extends TrainState implements Notifiable {
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private Decelerating() {
+	private DeceleratingState() {
 		instance = this;
 	}
 
@@ -31,11 +31,11 @@ public class Decelerating extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * when the state is entered
+	 * when the state is entered it will display that the train is decelerating
 	 */
 	@Override
 	public void enter() {
-		TrainContext.getInstance().showTrainStatus("Train Deccelerating");
+		TrainContext.getInstance().showTrainDecelerating();
 	}
 
 	/**
@@ -49,13 +49,13 @@ public class Decelerating extends TrainState implements Notifiable {
 	@Override
 	public void OnTimerTick(int timerValue) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void onTimerRunsOut() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

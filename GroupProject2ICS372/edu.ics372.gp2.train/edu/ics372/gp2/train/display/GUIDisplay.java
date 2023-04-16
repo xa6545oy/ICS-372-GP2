@@ -4,6 +4,7 @@ import edu.ics372.gp2.train.buttons.DoorObstructingButton;
 import edu.ics372.gp2.train.buttons.GUIButton;
 import edu.ics372.gp2.train.buttons.StationReachedButton;
 import edu.ics372.gp2.train.buttons.StationReachingButton;
+import edu.ics372.gp2.train.states.TrainContext;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -44,7 +45,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		Scene scene = new Scene(pane);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Train Program");
-//		MicrowaveContext.getInstance().setDisplay(this);
+		TrainContext.getInstance().setDisplay(this);
 		primaryStage.show();
 		primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, new EventHandler<WindowEvent>() {
 			@Override
@@ -59,7 +60,6 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showTimeLeft(int time) {
-		// TODO Auto-generated method stub
 		trainStatus.setText("" + time);
 	}
 
@@ -68,8 +68,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showStatus(String text) {
-		// TODO Auto-generated method stub
-		trainStatus.setText(text);
+		System.out.println(text);
+		//trainStatus.setText(text);
 	}
 
 	/**
@@ -77,8 +77,15 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorStatus(String text) {
-		// TODO Auto-generated method stub
 		doorStatus.setText(text);
+	}
+	
+	/*
+	 * Show train decelerating status
+	 */
+	@Override
+	public void showTrainDecelerating() {
+		trainStatus.setText("Train Decelerating");
 	}
 
 }

@@ -9,7 +9,7 @@ import edu.ics372.gp2.train.display.TrainDisplay;
  */
 public class TrainContext {
 	private TrainDisplay trainDisplay;
-	private TrainState trainState;
+	private TrainState currentState;
 	private static TrainContext instance;
 
 	/*
@@ -17,7 +17,7 @@ public class TrainContext {
 	 */
 	public TrainContext() {
 		instance = null;
-		trainState = Accelerating.getInstance();
+		currentState = AcceleratingState.getInstance();
 	}
 
 	/**
@@ -42,14 +42,15 @@ public class TrainContext {
 	}
 
 	/**
-	 * Called from the states to change the current state
+	 * Called from the states to change the current state. It calls a method exit() to exit the current state.
+	 * Then it sets the current state to the nextState and calls a method enter() to enter into the next state.
 	 * 
 	 * @param nextState The next state
 	 */
 	public void changeState(TrainState nextState) {
-		trainState.exit();
-		trainState = nextState;
-		trainState.enter();
+		currentState.exit();
+		currentState = nextState;
+		currentState.enter();
 	}
 
 	/**
@@ -68,6 +69,19 @@ public class TrainContext {
 
 	public void showDoorStatus(String text) {
 		trainDisplay.showDoorStatus(text);
+	}
+	
+	/*
+	 * StationReaching button is pressed. Invokes the onStationReaching() method to the
+	 * current state to transition to another state
+	 */
+	public void stationReaching() {
+		currentState.onStationReaching();
+		
+	}
+	
+	public void showTrainDecelerating() {
+		trainDisplay.showTrainDecelerating();
 	}
 
 }

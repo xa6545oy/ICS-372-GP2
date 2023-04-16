@@ -15,4 +15,9 @@ public interface TrainDisplay {
 	 * indicate door current status
 	 */
 	public void showDoorStatus(String text);
+	
+	/*
+	 * indicate train decelerating
+	 */
+	public void showTrainDecelerating();
 }
