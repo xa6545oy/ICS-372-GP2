@@ -115,7 +115,10 @@ public class TrainContext {
 	public void showTrainAccelerating() {
 		trainDisplay.showTrainStatus("Train Accelerating");
 	}
-
+	
+	/*
+	 * Changes display to show that the train is at max speed
+	 */
 	public void showTrainFullSpeed() {
 		trainDisplay.showTrainStatus("Train Max Speed");
 		

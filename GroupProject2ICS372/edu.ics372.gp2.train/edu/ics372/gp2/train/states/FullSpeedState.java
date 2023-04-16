@@ -1,7 +1,5 @@
 package edu.ics372.gp2.train.states;
 
-import edu.ics372.gp2.train.timer.Notifiable;
-
 public class FullSpeedState extends TrainState {
 	private static FullSpeedState instance;
 	
