@@ -46,6 +46,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Train Program");
 		TrainContext.getInstance().setDisplay(this);
+		TrainContext.getInstance().initialState();
 		primaryStage.show();
 		primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, new EventHandler<WindowEvent>() {
 			@Override

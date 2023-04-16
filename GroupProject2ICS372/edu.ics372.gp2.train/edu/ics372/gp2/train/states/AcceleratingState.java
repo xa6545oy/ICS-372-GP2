@@ -28,12 +28,12 @@ public class AcceleratingState extends TrainState implements Notifiable {
 
 	@Override
 	public void OnTimerTick(int timerValue) {
-		TrainContext.getInstance().showTrainStatus("accelerating to full speed in " + timer);
+		
 	}
 
 	@Override
 	public void onTimerRunsOut() {
-		TrainContext.getInstance().showTimeLeft(0);
+		TrainContext.getInstance().changeState(FullSpeedState.getInstance());
 	}
 
 	/**
@@ -41,8 +41,8 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void enter() {
-		// TODO Auto-generated method stub
 		timer = new Timer(this, 6);
+		TrainContext.getInstance().showTrainAccelerating();
 	}
 
 	/**
@@ -50,8 +50,8 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void exit() {
-		//timer.stop();
-		//timer = null;
+		timer.stop();
+		timer = null;
 	}
 
 	/*

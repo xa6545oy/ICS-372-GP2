@@ -39,7 +39,7 @@ public class StoppedState extends TrainState implements Notifiable {
 
 	}
 
-	/**
+	/*
 	 * 
 	 */
 	@Override

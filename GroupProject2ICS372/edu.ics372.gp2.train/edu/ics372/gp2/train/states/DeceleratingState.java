@@ -1,8 +1,6 @@
 package edu.ics372.gp2.train.states;
 
-import edu.ics372.gp2.train.timer.Notifiable;
-
-public class DeceleratingState extends TrainState implements Notifiable {
+public class DeceleratingState extends TrainState {
 	private static DeceleratingState instance;
 
 	/**
@@ -43,18 +41,6 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void exit() {
-		
-	}
-
-	@Override
-	public void OnTimerTick(int timerValue) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onTimerRunsOut() {
-		// TODO Auto-generated method stub
 		
 	}
 

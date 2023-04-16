@@ -19,16 +19,15 @@ public abstract class TrainState {
 	/**
 	 * method for when StationReaching Button is pressed
 	 */
-	public void onStationReaching() {
-		// TODO Auto-generated method stub
-
-	}
+	public void onStationReaching() {}
 
 	/**
 	 * method for when StationReached Button is pressed
 	 */
-	public void onStationReached() {
-		// TODO Auto-generated method stub
-
-	}
+	public void onStationReached() {}
+	
+	/**
+	 * method for when the train accelerates for 6 seconds it reaches full speed state
+	 */
+	public void reachFullSpeed() {}
 }

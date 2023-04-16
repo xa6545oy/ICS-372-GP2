@@ -93,7 +93,6 @@ public class TrainContext {
 	 */
 	public void onStationReached() {
 		currentState.onStationReached();
-		//trainDisplay.showTrainStopped();
 	}
 	
 	/*
@@ -101,6 +100,25 @@ public class TrainContext {
 	 */
 	public void showTrainStopped() {
 		trainDisplay.showTrainStatus("Train Stopped");
+	}
+	
+	/*
+	 * To enter the accelerating state at the start of the program
+	 */
+	public void initialState() {
+		currentState.enter();
+	}
+	
+	/*
+	 * Changes display to show that the train is accelerating
+	 */
+	public void showTrainAccelerating() {
+		trainDisplay.showTrainStatus("Train Accelerating");
+	}
+
+	public void showTrainFullSpeed() {
+		trainDisplay.showTrainStatus("Train Max Speed");
+		
 	}
 
 }
