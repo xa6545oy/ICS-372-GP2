@@ -60,8 +60,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 * show remaining time
 	 */
 	@Override
-	public void showTimeLeft(int time) {
-		trainStatus.setText("" + time);
+	public void showTimeLeft(String text) {
+		trainStatus.setText(text);
 	}
 
 	/**

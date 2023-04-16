@@ -28,7 +28,7 @@ public class AcceleratingState extends TrainState implements Notifiable {
 
 	@Override
 	public void OnTimerTick(int timerValue) {
-		
+		TrainContext.getInstance().showTimeBeforeMaxSpeed(timerValue);
 	}
 
 	@Override

@@ -60,7 +60,8 @@ public class TrainContext {
 	 * @param time Time left for cooking
 	 */
 	public void showTimeLeft(int time) {
-		trainDisplay.showTimeLeft(time);
+		String stringTime = Integer.toString(time);
+		trainDisplay.showTimeLeft(stringTime);
 	}
 
 	public void showTrainStatus(String text) {
@@ -122,6 +123,14 @@ public class TrainContext {
 	public void showTrainFullSpeed() {
 		trainDisplay.showTrainStatus("Train Max Speed");
 		
+	}
+	
+	/*
+	 * Shows the time before the train reaches max speed
+	 */
+	public void showTimeBeforeMaxSpeed(int timerValue) {
+		String timeBeforeMaxSpeed = timerValue + " seconds left until train reaches full speed";
+		trainDisplay.showTimeLeft(timeBeforeMaxSpeed);
 	}
 
 }

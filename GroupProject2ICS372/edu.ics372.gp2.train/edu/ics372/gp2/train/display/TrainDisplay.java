@@ -4,7 +4,7 @@ public interface TrainDisplay {
 	/*
 	 * indicate remaining time.
 	 */
-	public void showTimeLeft(int time);
+	public void showTimeLeft(String text);
 
 	/*
 	 * indicate train current status
