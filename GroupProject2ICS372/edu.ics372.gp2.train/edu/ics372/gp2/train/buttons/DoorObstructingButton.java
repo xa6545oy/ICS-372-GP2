@@ -20,7 +20,7 @@ public class DoorObstructingButton extends GUIButton implements EventHandler<Act
 	 */
 	@Override
 	public void handle(ActionEvent arg0) {
-		// TrainContext.getInstance().onDoorsObstructing();
+		TrainContext.getInstance().onDoorsObstructing();
 
 	}
 

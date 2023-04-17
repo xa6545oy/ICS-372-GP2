@@ -30,4 +30,9 @@ public abstract class TrainState {
 	 * method for when the train accelerates for 6 seconds it reaches full speed state
 	 */
 	public void reachFullSpeed() {}
+
+	/**
+	 * method for when an obstruction is detected
+	 */
+	public void doorObstructions() {}
 }

@@ -11,6 +11,8 @@ public class TrainContext {
 	private TrainDisplay trainDisplay;
 	private TrainState currentState;
 	private static TrainContext instance;
+	private long lastObstructionTime;
+	private boolean  isOpen = true;
 
 	/*
 	 * Make a singleton
@@ -132,5 +134,34 @@ public class TrainContext {
 		String timeBeforeMaxSpeed = timerValue + " seconds left until train reaches full speed";
 		trainDisplay.showTimeLeft(timeBeforeMaxSpeed);
 	}
+
+	/**
+	 * shows that an obstruction is detected
+	 */
+
+	public void detectObstruction() {
+		if (isOpen) {
+			trainDisplay.showDoorStatus("Obstruction detected. Doors reopening.");
+			reopen();
+		}
+	}
+
+	/**
+	 * reopening door after the obstruction was detected
+	 */
+	public void reopen() {
+		long timeElapsed = System.currentTimeMillis() - lastObstructionTime;
+		long reopeningTime = timeElapsed * 4 / 5;
+		try {
+			Thread.sleep(reopeningTime * 1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		isOpen = false;
+		lastObstructionTime = System.currentTimeMillis();
+		trainDisplay.showDoorStatus("Doors fully reopened.");
+
+	}
+
 
 }
