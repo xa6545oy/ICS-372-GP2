@@ -34,5 +34,5 @@ public abstract class TrainState {
 	/**
 	 * method for when an obstruction is detected
 	 */
-
+	public void doorObstructions() {}
 }
