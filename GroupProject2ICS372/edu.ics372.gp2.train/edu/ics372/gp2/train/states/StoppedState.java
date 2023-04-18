@@ -27,30 +27,38 @@ public class StoppedState extends TrainState implements Notifiable {
 		return instance;
 	} // end getInstance()
 
+	/**
+	 * Process timer tick event
+	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
-		// TODO Auto-generated method stub
-		TrainContext.getInstance().showDoorStatus("Door opening in " + timer);
+		TrainContext.getInstance().showDoorTimeBeforeOpened(timerValue);
 	}
 
+	/**
+	 * Process timer runs out event
+	 */
 	@Override
 	public void onTimerRunsOut() {
-		// TODO Auto-generated method stub
-
+		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance());
 	}
 
-	/*
-	 * 
+	/**
+	 * for when the state is entered. 1 second after the train stops, the doors of
+	 * the train start opening
 	 */
 	@Override
 	public void enter() {
+		timer = new Timer(this, 1);
 		TrainContext.getInstance().showTrainStopped();
 	}
 
+	/**
+	 * for when the state is exit
+	 */
 	@Override
 	public void exit() {
-		
-
+		TrainContext.getInstance().showTrainStopped();
 	}
 
 }

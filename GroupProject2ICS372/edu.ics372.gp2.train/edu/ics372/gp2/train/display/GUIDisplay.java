@@ -80,4 +80,83 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		doorStatus.setText(text);
 	}
 
+	/**
+	 * show train stopped
+	 */
+	@Override
+	public void showTrainStopped() {
+		trainStatus.setText("train stopped");
+	}
+
+	/**
+	 * show train accelerating
+	 */
+	@Override
+	public void showTrainAccelerating() {
+		trainStatus.setText("train accelerating");
+
+	}
+
+	/**
+	 * show train decelerating
+	 */
+	@Override
+	public void showTrainDecelerating() {
+		trainStatus.setText("train decelerating");
+
+	}
+
+	/**
+	 * show train is going full speed
+	 */
+	@Override
+	public void showTrainFullSpeed() {
+		trainStatus.setText("train going full speed");
+
+	}
+
+	/**
+	 * show door is opened
+	 */
+	@Override
+	public void showDoorOpened() {
+		doorStatus.setText("door opened");
+
+	}
+
+	/**
+	 * show door is opening
+	 */
+	@Override
+	public void showDoorOpening() {
+		doorStatus.setText("door opening");
+
+	}
+
+	/**
+	 * show door is closed
+	 */
+	@Override
+	public void showDoorClosed() {
+		doorStatus.setText("door closed");
+
+	}
+
+	/**
+	 * show door closing
+	 */
+	@Override
+	public void showDoorCLosing() {
+		doorStatus.setText("door closing");
+	}
+
+	/**
+	 * show when door is obstructed
+	 */
+	@Override
+	public void showDoorObstruction() {
+		doorStatus.setText("door obstructed");
+
+	}
+
 }

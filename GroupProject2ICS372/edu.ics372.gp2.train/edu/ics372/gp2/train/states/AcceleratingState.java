@@ -11,7 +11,7 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	 * Private constructor for the singleton pattern
 	 */
 	private AcceleratingState() {
-
+		instance = this;
 	}
 
 	/**
@@ -26,18 +26,25 @@ public class AcceleratingState extends TrainState implements Notifiable {
 		return instance;
 	}
 
+	/**
+	 * Process timer tick event
+	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
 		TrainContext.getInstance().showTimeBeforeMaxSpeed(timerValue);
 	}
 
+	/**
+	 * Process timer runs out event
+	 */
 	@Override
 	public void onTimerRunsOut() {
 		TrainContext.getInstance().changeState(FullSpeedState.getInstance());
 	}
 
 	/**
-	 * when the state is entered it make a timer
+	 * When the state is entered it make a timer. After starting from a station, the
+	 * train accelerates for 6 seconds
 	 */
 	@Override
 	public void enter() {
@@ -60,6 +67,14 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	@Override
 	public void onStationReaching() {
 		TrainContext.getInstance().changeState(DeceleratingState.getInstance());
+	}
+
+	/*
+	 * When the train is completely reached station, it stops
+	 */
+	@Override
+	public void onStationReached() {
+		TrainContext.getInstance().changeState(StoppedState.getInstance());
 	}
 
 }

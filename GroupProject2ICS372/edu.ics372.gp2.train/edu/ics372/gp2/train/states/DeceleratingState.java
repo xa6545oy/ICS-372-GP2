@@ -41,7 +41,7 @@ public class DeceleratingState extends TrainState {
 	 */
 	@Override
 	public void exit() {
-		
+		TrainContext.getInstance().showTrainDecelerating();
 	}
 
 }
