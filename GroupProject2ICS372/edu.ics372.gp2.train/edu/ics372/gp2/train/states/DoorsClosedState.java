@@ -60,7 +60,8 @@ public class DoorsClosedState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void exit() {
-		// TODO Auto-generated method stub
+		timer.stop();
+		timer = null;
 
 	}
 }

@@ -54,11 +54,13 @@ public class StoppedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * for when the state is exit
+	 * for when the state is exit. Reset timer
 	 */
 	@Override
 	public void exit() {
 		TrainContext.getInstance().showTrainStopped();
+		timer.stop();
+		timer = null;
 	}
 
 }
