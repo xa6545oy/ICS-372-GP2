@@ -97,6 +97,13 @@ public class TrainContext {
 	public void onStationReached() {
 		currentState.onStationReached();
 	}
+
+	/**
+	 * When an door obstructing is clicked on
+	 */
+	public void onDoorObstructing() {
+		currentState.doorObstructions();
+	}
 	
 	/*
 	 * Changes the display to show that the train is stopped
