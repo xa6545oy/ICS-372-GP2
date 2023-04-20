@@ -14,7 +14,7 @@ public interface TrainDisplay {
 	/*
 	 * indicate door current status
 	 */
-	public void showDoorStatus(String text);
+//	public void showDoorStatus(String text);
 
 	/**
 	 * Indicate that the train is stopped

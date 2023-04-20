@@ -71,9 +71,9 @@ public class TrainContext {
 		trainDisplay.showTrainStatus(text);
 	}
 
-	public void showDoorStatus(String text) {
-		trainDisplay.showDoorStatus(text);
-	}
+//	public void showDoorStatus(String text) {
+//		trainDisplay.showDoorStatus(text);
+//	}
 
 	/*
 	 * Station Reaching button is pressed. Invokes the onStationReaching() method in
@@ -89,6 +89,7 @@ public class TrainContext {
 	 */
 	public void showTrainDecelerating() {
 		trainDisplay.showTrainStatus("Train Decelerating");
+		trainDisplay.showTimeLeft("Waiting for stop signal");
 	}
 
 	/*
@@ -132,35 +133,35 @@ public class TrainContext {
 	 */
 	public void showTrainFullSpeed() {
 		trainDisplay.showTrainStatus("Train Max Speed");
-
+		trainDisplay.showTimeLeft("Waiting for signal to decelerate");
 	}
 
 	/*
 	 * Changes display to show that the door is opening
 	 */
 	public void showDoorsOpening() {
-		trainDisplay.showDoorStatus("Doors Opening");
+		trainDisplay.showTrainStatus("Doors Opening");
 	}
 
 	/*
 	 * Changes display to show that the door is closing
 	 */
 	public void showDoorsClosing() {
-		trainDisplay.showDoorStatus("Doors Closing");
+		trainDisplay.showTrainStatus("Doors Closing");
 	}
 
 	/*
 	 * Changes display to show that the door is Opened
 	 */
 	public void showDoorsOpened() {
-		trainDisplay.showDoorStatus("Doors Opened");
+		trainDisplay.showTrainStatus("Doors Opened");
 	}
 
 	/*
 	 * Changes display to show that the door is Closed
 	 */
 	public void showDoorsClosed() {
-		trainDisplay.showDoorStatus("Doors Closed");
+		trainDisplay.showTrainStatus("Doors Closed");
 	}
 
 	/*
@@ -217,7 +218,7 @@ public class TrainContext {
 
 	public void detectObstruction() {
 		if (isOpen) {
-			trainDisplay.showDoorStatus("Obstruction detected. Doors reopening.");
+			trainDisplay.showTrainStatus("Obstruction detected. Doors reopening.");
 			reopen();
 		}
 	}
@@ -235,7 +236,7 @@ public class TrainContext {
 		}
 		isOpen = false;
 		lastObstructionTime = System.currentTimeMillis();
-		trainDisplay.showDoorStatus("Doors fully reopened.");
+		trainDisplay.showTrainStatus("Doors fully reopened.");
 
 	}
 

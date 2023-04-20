@@ -21,7 +21,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	private GUIButton stationReached;
 	private GUIButton stationReaching;
 	private Text trainStatus = new Text("Train Accelerating");
-	private Text doorStatus = new Text("Door Closed");
+	private Text stateInfo = new Text("");
 
 	/**
 	 * Sets up the interface
@@ -38,7 +38,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		pane.setVgap(10);
 		pane.setPadding(new Insets(10, 10, 10, 10));
 		pane.add(trainStatus, 0, 0);
-		pane.add(doorStatus, 1, 0);
+		pane.add(stateInfo, 1, 0);
 		pane.add(stationReaching, 2, 0);
 		pane.add(stationReached, 3, 0);
 		pane.add(doorObstructing, 4, 0);
@@ -47,8 +47,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		primaryStage.setTitle("Train Program");
 		TrainContext.getInstance().setDisplay(this);
 		TrainContext.getInstance().initialState();
-		primaryStage.setMinWidth(700);
-		primaryStage.setMaxWidth(800);
+		primaryStage.setMinWidth(900);
+		primaryStage.setMaxWidth(1000);
 		primaryStage.show();
 		primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, new EventHandler<WindowEvent>() {
 			@Override
@@ -63,7 +63,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showTimeLeft(String text) {
-		trainStatus.setText(text);
+		stateInfo.setText(text);
 	}
 
 	/**
@@ -77,10 +77,10 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	/**
 	 * Show current door Status
 	 */
-	@Override
-	public void showDoorStatus(String text) {
-		doorStatus.setText(text);
-	}
+//	@Override
+//	public void showDoorStatus(String text) {
+//		stateInfo.setText(text);
+//	}
 
 	/**
 	 * show train stopped
@@ -113,8 +113,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showTrainFullSpeed() {
-		trainStatus.setText("train going full speed");
-
+		trainStatus.setText("full speed");
+		//stateInfo.setText("waiting for signal to decelerate");
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorOpened() {
-		doorStatus.setText("door opened");
+		stateInfo.setText("door opened");
 
 	}
 
@@ -131,7 +131,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorOpening() {
-		doorStatus.setText("door opening");
+		trainStatus.setText("door opening");
 
 	}
 
@@ -140,7 +140,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorClosed() {
-		doorStatus.setText("door closed");
+		stateInfo.setText("door closed");
 
 	}
 
@@ -149,7 +149,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorCLosing() {
-		doorStatus.setText("door closing");
+		trainStatus.setText("door closing");
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	 */
 	@Override
 	public void showDoorObstruction() {
-		doorStatus.setText("door obstructed");
+		stateInfo.setText("door obstructed");
 
 	}
 

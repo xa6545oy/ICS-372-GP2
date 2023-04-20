@@ -49,7 +49,6 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	@Override
 	public void OnTimerTick(int timerValue) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

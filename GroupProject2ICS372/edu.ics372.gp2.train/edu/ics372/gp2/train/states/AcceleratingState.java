@@ -72,9 +72,9 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	/*
 	 * When the train is completely reached station, it stops
 	 */
-	@Override
-	public void onStationReached() {
-		TrainContext.getInstance().changeState(StoppedState.getInstance());
-	}
+//	@Override
+//	public void onStationReached() {
+//		TrainContext.getInstance().changeState(StoppedState.getInstance());
+//	}
 
 }
