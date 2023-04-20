@@ -239,4 +239,19 @@ public class TrainContext {
 
 	}
 
+	/**
+	 * close door after 8s
+	 */
+	public void closeAfterDelay() {
+		new Thread(() -> {
+			try {
+				Thread.sleep(8000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			isOpen = false;
+			System.out.println("Doors closed.");
+		}).start();
+	}
+
 }
