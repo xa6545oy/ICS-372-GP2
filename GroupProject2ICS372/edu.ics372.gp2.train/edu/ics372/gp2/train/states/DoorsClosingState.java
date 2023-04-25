@@ -3,9 +3,16 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
+/**
+ * This class represent the state when the door is closing
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class DoorsClosingState extends TrainState implements Notifiable {
 	private static DoorsClosingState instance;
 	private Timer timer;
+	private long startTime;
+	private long totalClosingTime;
 
 	/**
 	 * Private constructor for the singleton pattern
@@ -14,6 +21,11 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 		instance = this;
 	}
 
+	/**
+	 * For the singleton pattern
+	 * 
+	 * @return instance
+	 */
 	public static DoorsClosingState getInstance() {
 		if (instance == null) {
 			instance = new DoorsClosingState();
@@ -22,7 +34,7 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process clock tick event
+	 * Process clock tick event. Shows the door closing time.
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
@@ -31,16 +43,21 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process timer runs out event
+	 * Process timer runs out event. Entering doors closed state.
 	 */
 	@Override
 	public void onTimerRunsOut() {
 		TrainContext.getInstance().changeState(DoorsClosedState.getInstance());
 
 	}
-	
+
+	/**
+	 * Process obstruction of the doors
+	 */
+	@Override
 	public void onDoorObstruction() {
-		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance());
+		totalClosingTime = (System.currentTimeMillis() - startTime) / 1000;
+		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance(totalClosingTime));
 	}
 
 	/**
@@ -49,11 +66,12 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	@Override
 	public void enter() {
 		timer = new Timer(this, 5);
+		startTime = System.currentTimeMillis();
 		TrainContext.getInstance().showDoorsClosing();
 	}
 
 	/**
-	 * when the state is entered. Reset timer.
+	 * when the state is entered. Stops and resets timer.
 	 */
 	@Override
 	public void exit() {

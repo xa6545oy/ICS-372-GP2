@@ -69,10 +69,6 @@ public class TrainContext {
 		trainDisplay.showTrainStatus(text);
 	}
 
-//	public void showDoorStatus(String text) {
-//		trainDisplay.showDoorStatus(text);
-//	}
-
 	/*
 	 * Station Reaching button is pressed. Invokes the onStationReaching() method in
 	 * the current state to transition to another state

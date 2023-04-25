@@ -3,6 +3,11 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
+/**
+ * This class represent the state when the door is closed
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class DoorsClosedState extends TrainState implements Notifiable {
 	private static DoorsClosedState instance;
 	private Timer timer;

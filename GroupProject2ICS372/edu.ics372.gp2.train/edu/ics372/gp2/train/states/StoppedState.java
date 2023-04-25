@@ -3,6 +3,11 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
+/**
+ * This class represent the state when the train is stopped
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class StoppedState extends TrainState implements Notifiable {
 
 	private static StoppedState instance;
@@ -32,11 +37,11 @@ public class StoppedState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
-		TrainContext.getInstance().showDoorTimeBeforeOpened(timerValue);
+		TrainContext.getInstance().showDoorTimeBeforeOpening(timerValue);
 	}
 
 	/**
-	 * Process timer runs out event
+	 * Process timer runs out event. Enters doors opening state
 	 */
 	@Override
 	public void onTimerRunsOut() {
@@ -54,7 +59,7 @@ public class StoppedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * for when the state is exit. Reset timer
+	 * for when the state is exit. Shows train is completely stopped and reset timer
 	 */
 	@Override
 	public void exit() {

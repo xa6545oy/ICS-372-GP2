@@ -3,6 +3,11 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
+/**
+ * This class represent the state when the train is accelerating
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class AcceleratingState extends TrainState implements Notifiable {
 	private static AcceleratingState instance;
 	private Timer timer;
@@ -27,7 +32,8 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process timer tick event
+	 * Process timer tick event. Shows the time when the train is accelerating
+	 * before it gets full speed
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
@@ -35,7 +41,7 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process timer runs out event
+	 * Process timer runs out event. After 6s, the train attains full speed.
 	 */
 	@Override
 	public void onTimerRunsOut() {
@@ -53,7 +59,7 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * when exiting the state stop timer and make it null
+	 * when the state is entered. Stops and resets timer.
 	 */
 	@Override
 	public void exit() {

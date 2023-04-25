@@ -1,12 +1,17 @@
 package edu.ics372.gp2.train.states;
 
-import edu.ics372.gp2.train.timer.Notifiable;
-
-public class DeceleratingState extends TrainState implements Notifiable {
+/**
+ * This class represent the state when the train is decelerating
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
+public class DeceleratingState extends TrainState {
 	private static DeceleratingState instance;
 
 	/**
 	 * create the instance and then return the instance
+	 * 
+	 * @return instance
 	 */
 	public static DeceleratingState getInstance() {
 		if (instance == null) {
@@ -23,11 +28,13 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * for when the StationReachedButton is pressed
+	 * for when the StationReachedButton is pressed. The train receives a signal
+	 * that it has arrived at a station.
 	 */
 	@Override
 	public void onStationReached() {
 		TrainContext.getInstance().changeState(StoppedState.getInstance());
+		TrainContext.getInstance().showTrainStopped();
 	}
 
 	/**
@@ -44,17 +51,6 @@ public class DeceleratingState extends TrainState implements Notifiable {
 	@Override
 	public void exit() {
 		TrainContext.getInstance().showTrainDecelerating();
-	}
-
-	@Override
-	public void OnTimerTick(int timerValue) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void onTimerRunsOut() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

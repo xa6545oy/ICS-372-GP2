@@ -3,6 +3,11 @@ package edu.ics372.gp2.train.states;
 import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
+/**
+ * This class represent the state when the door is opened
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class DoorsOpenedState extends TrainState implements Notifiable {
 	private static DoorsOpenedState instance;
 	private Timer timer;
@@ -27,7 +32,8 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process clock tick event
+	 * Process clock tick event. Show the time doors remain in the fully-open
+	 * position.
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
@@ -35,7 +41,7 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * Process timer runs out event
+	 * Process timer runs out event. The doors start closing.
 	 */
 	@Override
 	public void onTimerRunsOut() {
@@ -48,12 +54,12 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void enter() {
-		timer = new Timer(this, 10); // will change this back to 30s
+		timer = new Timer(this, 10); // CHANGE THIS BACK TO 30
 		TrainContext.getInstance().showDoorsOpened();
 	}
 
 	/**
-	 * when the state is exited. Reset timer
+	 * when the state is entered. Stops and resets timer.
 	 */
 	@Override
 	public void exit() {

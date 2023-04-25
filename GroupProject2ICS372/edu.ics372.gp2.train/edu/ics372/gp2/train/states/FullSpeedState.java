@@ -1,5 +1,10 @@
 package edu.ics372.gp2.train.states;
 
+/**
+ * This class represent the state when the train is in full speed
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class FullSpeedState extends TrainState {
 	private static FullSpeedState instance;
 
@@ -31,25 +36,20 @@ public class FullSpeedState extends TrainState {
 
 	}
 
+	/**
+	 * for when exits the state
+	 */
 	@Override
 	public void exit() {
 
 	}
 
 	/*
-	 * When the train is reaching station, it decelerates
+	 * When the train is reaching station, it decelerates.
 	 */
 	@Override
 	public void onStationReaching() {
 		TrainContext.getInstance().changeState(DeceleratingState.getInstance());
 	}
-
-	/*
-	 * When the train is completely reached station, it stops
-	 */
-//	@Override
-//	public void onStationReached() {
-//		TrainContext.getInstance().changeState(StoppedState.getInstance());
-//	}
 
 }
