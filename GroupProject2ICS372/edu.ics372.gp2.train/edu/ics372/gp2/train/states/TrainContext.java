@@ -11,8 +11,6 @@ public class TrainContext {
 	private TrainDisplay trainDisplay;
 	private TrainState currentState;
 	private static TrainContext instance;
-	private long lastObstructionTime;
-	private boolean isOpen = true;
 
 	/*
 	 * Make a singleton
@@ -104,7 +102,7 @@ public class TrainContext {
 	 * When an door obstructing is clicked on
 	 */
 	public void onDoorObstructing() {
-		currentState.doorObstructions();
+		currentState.onDoorObstruction();
 	}
 
 	/*
@@ -211,48 +209,4 @@ public class TrainContext {
 		String timeBeforeAccelerating = timerValue + " seconds left until train accelerating";
 		trainDisplay.showTimeLeft(timeBeforeAccelerating);
 	}
-
-	/**
-	 * shows that an obstruction is detected
-	 */
-
-	public void detectObstruction() {
-		if (isOpen) {
-			trainDisplay.showTrainStatus("Obstruction detected. Doors reopening.");
-			reopen();
-		}
-	}
-
-	/**
-	 * reopening door after the obstruction was detected
-	 */
-	public void reopen() {
-		long timeElapsed = System.currentTimeMillis() - lastObstructionTime;
-		long reopeningTime = timeElapsed * 4 / 5;
-		try {
-			Thread.sleep(reopeningTime * 1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		isOpen = false;
-		lastObstructionTime = System.currentTimeMillis();
-		trainDisplay.showTrainStatus("Doors fully reopened.");
-
-	}
-
-	/**
-	 * close door after 8s
-	 */
-	public void closeAfterDelay() {
-		new Thread(() -> {
-			try {
-				Thread.sleep(8000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			isOpen = false;
-			System.out.println("Doors closed.");
-		}).start();
-	}
-
 }

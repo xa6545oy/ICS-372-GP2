@@ -38,6 +38,10 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 		TrainContext.getInstance().changeState(DoorsClosedState.getInstance());
 
 	}
+	
+	public void onDoorObstruction() {
+		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance());
+	}
 
 	/**
 	 * when the state is entered. It takes 5s for the doors to close
