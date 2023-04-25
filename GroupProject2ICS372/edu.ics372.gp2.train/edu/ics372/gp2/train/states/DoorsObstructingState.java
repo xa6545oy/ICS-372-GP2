@@ -11,15 +11,14 @@ import edu.ics372.gp2.train.timer.Timer;
 public class DoorsObstructingState extends TrainState implements Notifiable {
 	private static DoorsObstructingState instance;
 	private Timer timer;
-	private long totalClosingTime;
-	private int reopenTime;
+	private int elapsedTime;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private DoorsObstructingState(long totalClosingTime) {
+	private DoorsObstructingState(int elapsedTime) {
 		instance = this;
-		this.totalClosingTime = totalClosingTime;
+		this.elapsedTime = elapsedTime;
 
 	}
 
@@ -28,9 +27,9 @@ public class DoorsObstructingState extends TrainState implements Notifiable {
 	 * 
 	 * @return instance
 	 */
-	public static DoorsObstructingState getInstance(long totalClosingTime) {
+	public static DoorsObstructingState getInstance(int elapsedTime) {
 		if (instance == null) {
-			instance = new DoorsObstructingState(totalClosingTime);
+			instance = new DoorsObstructingState(elapsedTime);
 		}
 		return instance;
 	}
@@ -51,16 +50,19 @@ public class DoorsObstructingState extends TrainState implements Notifiable {
 	public void onTimerRunsOut() {
 		// TODO Auto-generated method stub
 		TrainContext.getInstance().changeState(DoorsOpenedState.getInstance());
+		// After fully reopening, the doors will reclose after 8 seconds. The doors may
+		// again encounter obstruction and the process could repeat.
+		// WORK ON THIS
 	}
 
 	/**
-	 * when the state is entered.
+	 * when the state is entered. The reopening time is dependent on how far the
+	 * door had closed
 	 */
 	@Override
 	public void enter() {
 		// TODO Auto-generated method stub
-		reopenTime = (int) (totalClosingTime * 4 / 5);
-		timer = new Timer(this, reopenTime);
+		timer = new Timer(this, (int) (elapsedTime * 4 / 5));
 		TrainContext.getInstance().showDoorsOpening();
 	}
 

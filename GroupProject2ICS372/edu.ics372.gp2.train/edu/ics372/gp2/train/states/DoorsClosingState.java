@@ -11,8 +11,6 @@ import edu.ics372.gp2.train.timer.Timer;
 public class DoorsClosingState extends TrainState implements Notifiable {
 	private static DoorsClosingState instance;
 	private Timer timer;
-	private long startTime;
-	private long totalClosingTime;
 
 	/**
 	 * Private constructor for the singleton pattern
@@ -56,8 +54,7 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void onDoorObstruction() {
-		totalClosingTime = (System.currentTimeMillis() - startTime) / 1000;
-		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance(totalClosingTime));
+		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance(timer.getTimeValue()));
 	}
 
 	/**
@@ -66,7 +63,6 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	@Override
 	public void enter() {
 		timer = new Timer(this, 5);
-		startTime = System.currentTimeMillis();
 		TrainContext.getInstance().showDoorsClosing();
 	}
 
