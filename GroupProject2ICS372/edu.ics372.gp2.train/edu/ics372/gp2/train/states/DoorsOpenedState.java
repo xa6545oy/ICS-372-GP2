@@ -18,7 +18,7 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 	 */
 	private DoorsOpenedState() {
 		instance = this;
-		timeOpen = 10;
+		timeOpen = 30;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 		if (instance == null) {
 			instance = new DoorsOpenedState();
 		}
-		timeOpen = obstruction ? 5 : 10;
+		timeOpen = obstruction ? 8 : 30;
 		return instance;
 	}
 

@@ -5,6 +5,7 @@ import edu.ics372.gp2.train.buttons.GUIButton;
 import edu.ics372.gp2.train.buttons.StationReachedButton;
 import edu.ics372.gp2.train.buttons.StationReachingButton;
 import edu.ics372.gp2.train.states.TrainContext;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,8 +16,13 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * GUI to implement the TrainDisplay interface
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ *
+ */
 public class GUIDisplay extends Application implements TrainDisplay {
-	// Instance Variables
 	private GUIButton doorObstructing;
 	private GUIButton stationReached;
 	private GUIButton stationReaching;
@@ -47,8 +53,8 @@ public class GUIDisplay extends Application implements TrainDisplay {
 		primaryStage.setTitle("Train Program");
 		TrainContext.getInstance().setDisplay(this);
 		TrainContext.getInstance().initialState();
-		primaryStage.setMinWidth(900);
-		primaryStage.setMaxWidth(1000);
+		primaryStage.setMinWidth(750);
+		primaryStage.setMaxWidth(800);
 		primaryStage.show();
 		primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, new EventHandler<WindowEvent>() {
 			@Override
@@ -59,7 +65,10 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	}
 
 	/**
-	 * show remaining time
+	 * Indicate time remaining in state if time constrained,
+	 * otherwise displays details about state.
+	 * 
+	 * @param text describing time in state
 	 */
 	@Override
 	public void showTimeLeft(String text) {
@@ -67,98 +76,12 @@ public class GUIDisplay extends Application implements TrainDisplay {
 	}
 
 	/**
-	 * Show current train Status
+	 * Indicate current train state.
+	 * 
+	 * @param text describing current train state
 	 */
 	@Override
 	public void showTrainStatus(String text) {
 		trainStatus.setText(text);
 	}
-
-	/**
-	 * Show current door Status
-	 */
-//	@Override
-//	public void showDoorStatus(String text) {
-//		stateInfo.setText(text);
-//	}
-
-	/**
-	 * show train stopped
-	 */
-	@Override
-	public void showTrainStopped() {
-		trainStatus.setText("train stopped");
-	}
-
-	/**
-	 * show train accelerating
-	 */
-	@Override
-	public void showTrainAccelerating() {
-		trainStatus.setText("train accelerating");
-
-	}
-
-	/**
-	 * show train decelerating
-	 */
-	@Override
-	public void showTrainDecelerating() {
-		trainStatus.setText("train decelerating");
-
-	}
-
-	/**
-	 * show train is going full speed
-	 */
-	@Override
-	public void showTrainFullSpeed() {
-		trainStatus.setText("full speed");
-		//stateInfo.setText("waiting for signal to decelerate");
-	}
-
-	/**
-	 * show door is opened
-	 */
-	@Override
-	public void showDoorOpened() {
-		stateInfo.setText("door opened");
-
-	}
-
-	/**
-	 * show door is opening
-	 */
-	@Override
-	public void showDoorOpening() {
-		trainStatus.setText("door opening");
-
-	}
-
-	/**
-	 * show door is closed
-	 */
-	@Override
-	public void showDoorClosed() {
-		stateInfo.setText("door closed");
-
-	}
-
-	/**
-	 * show door closing
-	 */
-	@Override
-	public void showDoorCLosing() {
-		trainStatus.setText("door closing");
-	}
-
-	/**
-	 * show when door is obstructed
-	 */
-	@Override
-	public void showDoorObstruction() {
-		stateInfo.setText("door obstructed");
-
-	}
-
 }

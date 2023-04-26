@@ -3,36 +3,49 @@ package edu.ics372.gp2.train.states;
 /**
  * Super class for all states
  * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
  */
 public abstract class TrainState {
 
 	/**
-	 * method for when is entering a state
+	 * Method for when entering a state
 	 */
 	public abstract void enter();
 
 	/**
-	 * method for when is exiting a state
+	 * Method for when exiting a state
 	 */
 	public abstract void exit();
 
 	/**
-	 * method for when StationReaching Button is pressed
+	 * Method for when StationReaching Button is pressed
 	 */
 	public void onStationReaching() {}
 
 	/**
-	 * method for when StationReached Button is pressed
+	 * Method for when StationReached Button is pressed
 	 */
 	public void onStationReached() {}
 	
 	/**
-	 * method for when the train accelerates for 6 seconds it reaches full speed state
+	 * Method for when the train accelerates for 6 seconds, then it reaches full speed state
 	 */
 	public void reachFullSpeed() {}
 
 	/**
-	 * method for when an obstruction is detected
+	 * Method for when an obstruction is detected
 	 */
 	public void onDoorObstruction() {}
+	
+	/**
+	 * Process clock tick Generates the timer runs out event
+	 * 
+	 * @param time remaining in timer
+	 */
+	public void onTimerTick(int timerValue) {}
+
+	/**
+	 * Process clock ticks Generates the timer runs out event
+	 */
+	public void onTimerRunsOut() {}
 }

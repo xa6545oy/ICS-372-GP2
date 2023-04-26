@@ -22,6 +22,8 @@ public class DoorObstructingButton extends GUIButton implements EventHandler<Act
 
 	/**
 	 * The eventHandler to let TrainContext knows when button is pressed
+	 * 
+	 * @param ActionEvent of button being pressed
 	 */
 	@Override
 	public void handle(ActionEvent arg0) {

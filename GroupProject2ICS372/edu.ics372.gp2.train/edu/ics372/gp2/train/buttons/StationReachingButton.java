@@ -20,8 +20,10 @@ public class StationReachingButton extends GUIButton implements EventHandler<Act
 		super(string);
 	}
 
-	/*
+	/**
 	 * The eventHandler to let TrainContext knows when button is pressed
+	 * 
+	 * @param ActionEvent of button being pressed
 	 */
 	@Override
 	public void handle(ActionEvent arg0) {

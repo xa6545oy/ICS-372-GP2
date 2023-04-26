@@ -3,6 +3,34 @@ package edu.ics372.gp2.train.timer;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+/**
+*
+* @author Brahma Dathan and Sarnath Ramnath
+* @Copyright (c) 2010
+
+* Redistribution and use with or without
+* modification, are permitted provided that the following conditions
+* are met:
+*
+*   - the use is for academic purpose only
+*   - Redistributions of source code must retain the above copyright
+*     notice, this list of conditions and the following disclaimer.
+*   - Neither the name of Brahma Dathan or Sarnath Ramnath
+*     may be used to endorse or promote products derived
+*     from this software without specific prior written permission.
+*
+* The authors do not make any claims regarding the correctness of the code in this module
+* and are not responsible for any loss or damage resulting from its use.
+*/
+
+/**
+* The timer allows a certain time period to be set when created. It sends
+* signals back to its creator every second and a timer runs out message when
+* the time period has elapsed.
+*
+* @author Brahma Dathan
+*
+*/
 public class Timer implements PropertyChangeListener {
 	private int timeValue;
 	private Notifiable client;
@@ -18,15 +46,6 @@ public class Timer implements PropertyChangeListener {
 		this.client = client;
 		this.timeValue = timeValue;
 		Clock.getInstance().addPropertyChangeListener(this);
-	}
-
-	/**
-	 * The timer value could be changed using this method.
-	 *
-	 * @param value the increment (could be negative) for the time value.
-	 */
-	public void addTimeValue(int value) {
-		timeValue += value;
 	}
 
 	/**
