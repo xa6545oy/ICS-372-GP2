@@ -11,14 +11,14 @@ import edu.ics372.gp2.train.timer.Timer;
 public class DoorsObstructingState extends TrainState implements Notifiable {
 	private static DoorsObstructingState instance;
 	private Timer timer;
-	private double elapsedTime;
+	private static double openTime;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
 	private DoorsObstructingState(int elapsedTime) {
 		instance = this;
-		this.elapsedTime = (5 - elapsedTime) * 0.8;
+		openTime = (5 - elapsedTime) * 0.8;
 
 	}
 
@@ -31,9 +31,10 @@ public class DoorsObstructingState extends TrainState implements Notifiable {
 		if (instance == null) {
 			instance = new DoorsObstructingState(elapsedTime);
 		}
+		openTime = (5 - elapsedTime) * 0.8;
 		return instance;
 	}
-
+	
 	/**
 	 * Process clock tick event
 	 */
@@ -62,7 +63,7 @@ public class DoorsObstructingState extends TrainState implements Notifiable {
 	@Override
 	public void enter() {
 		// TODO Auto-generated method stub
-		timer = new Timer(this, (int)elapsedTime);
+		timer = new Timer(this, (int)openTime);
 		TrainContext.getInstance().showDoorsOpening();
 	}
 
