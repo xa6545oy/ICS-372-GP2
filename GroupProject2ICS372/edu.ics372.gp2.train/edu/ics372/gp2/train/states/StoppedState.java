@@ -56,6 +56,7 @@ public class StoppedState extends TrainState implements Notifiable {
 	public void enter() {
 		timer = new Timer(this, 1);
 		TrainContext.getInstance().showTrainStopped();
+		TrainContext.getInstance().showDoorTimeBeforeOpening(timer.getTimeValue());
 	}
 
 	/**
