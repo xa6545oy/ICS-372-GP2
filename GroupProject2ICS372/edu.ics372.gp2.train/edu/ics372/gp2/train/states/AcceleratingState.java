@@ -56,6 +56,7 @@ public class AcceleratingState extends TrainState implements Notifiable {
 	public void enter() {
 		timer = new Timer(this, 6);
 		TrainContext.getInstance().showTrainAccelerating();
+		TrainContext.getInstance().showTimeBeforeMaxSpeed(timer.getTimeValue());
 	}
 
 	/**

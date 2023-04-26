@@ -65,6 +65,7 @@ public class DoorsObstructingState extends TrainState implements Notifiable {
 		// TODO Auto-generated method stub
 		timer = new Timer(this, (int)openTime);
 		TrainContext.getInstance().showDoorsOpening();
+		TrainContext.getInstance().showDoorTimeBeforeOpened(timer.getTimeValue());
 	}
 
 	/**

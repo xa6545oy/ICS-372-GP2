@@ -37,7 +37,6 @@ public class DoorsOpeningState extends TrainState implements Notifiable {
 	@Override
 	public void OnTimerTick(int timerValue) {
 		TrainContext.getInstance().showDoorTimeBeforeOpened(timerValue);
-
 	}
 
 	/**
@@ -55,6 +54,7 @@ public class DoorsOpeningState extends TrainState implements Notifiable {
 	public void enter() {
 		timer = new Timer(this, 4);
 		TrainContext.getInstance().showDoorsOpening();
+		TrainContext.getInstance().showDoorTimeBeforeOpened(timer.getTimeValue());
 	}
 
 	/**

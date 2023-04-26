@@ -56,6 +56,7 @@ public class DoorsOpenedState extends TrainState implements Notifiable {
 	public void enter() {
 		timer = new Timer(this, 10); // CHANGE THIS BACK TO 30
 		TrainContext.getInstance().showDoorsOpened();
+		TrainContext.getInstance().showDoorTimeBeforeClosing(timer.getTimeValue());
 	}
 
 	/**
