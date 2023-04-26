@@ -4,10 +4,15 @@ import edu.ics372.gp2.train.states.TrainContext;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * This class represents the DoorObstructingButton
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class DoorObstructingButton extends GUIButton implements EventHandler<ActionEvent> {
 
 	/**
-	 * constructor to create doorObstructionButton
+	 * Constructor to create DoorObstructingButton
 	 * 
 	 * @param the text on button when it made
 	 */
@@ -16,12 +21,10 @@ public class DoorObstructingButton extends GUIButton implements EventHandler<Act
 	}
 
 	/**
-	 * the eventHandler to let trainStateContext knows when button is pressed
+	 * The eventHandler to let TrainContext knows when button is pressed
 	 */
 	@Override
 	public void handle(ActionEvent arg0) {
 		TrainContext.getInstance().onDoorObstructing();
-
 	}
-
 }

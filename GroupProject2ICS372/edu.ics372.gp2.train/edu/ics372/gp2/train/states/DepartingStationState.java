@@ -4,18 +4,18 @@ import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
 /**
- * This class represent the state when the door is closed
+ * This class represents the state when the train is about to depart the station
  * 
  * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
  */
-public class DoorsClosedState extends TrainState implements Notifiable {
-	private static DoorsClosedState instance;
+public class DepartingStationState extends TrainState implements Notifiable {
+	private static DepartingStationState instance;
 	private Timer timer;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private DoorsClosedState() {
+	private DepartingStationState() {
 		instance = this;
 	}
 
@@ -24,15 +24,17 @@ public class DoorsClosedState extends TrainState implements Notifiable {
 	 * 
 	 * @return the instance
 	 */
-	public static DoorsClosedState getInstance() {
+	public static DepartingStationState getInstance() {
 		if (instance == null) {
-			instance = new DoorsClosedState();
+			instance = new DepartingStationState();
 		}
 		return instance;
 	}
 
 	/**
 	 * Process timer tick event
+	 * 
+	 * @param time remaining in timer
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
@@ -46,11 +48,10 @@ public class DoorsClosedState extends TrainState implements Notifiable {
 	@Override
 	public void onTimerRunsOut() {
 		TrainContext.getInstance().changeState(AcceleratingState.getInstance());
-
 	}
 
 	/**
-	 * when the state is entered it make a timer. After the doors are fully closed,
+	 * When the state is entered it makes a timer. After the doors are fully closed,
 	 * the train starts moving (accelerating) after 3 seconds
 	 */
 	@Override
@@ -61,12 +62,11 @@ public class DoorsClosedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * when exiting the state
+	 * When exiting the state
 	 */
 	@Override
 	public void exit() {
 		timer.stop();
 		timer = null;
-
 	}
 }

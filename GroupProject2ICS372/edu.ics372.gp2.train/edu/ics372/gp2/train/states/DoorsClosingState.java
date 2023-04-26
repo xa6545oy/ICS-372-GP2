@@ -4,7 +4,7 @@ import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
 /**
- * This class represent the state when the door is closing
+ * This class represents the state when the doors are closing
  * 
  * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
  */
@@ -33,11 +33,12 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 
 	/**
 	 * Process clock tick event. Shows the door closing time.
+	 * 
+	 * @param time remaining in timer
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
 		TrainContext.getInstance().showDoorTimeBeforeClosed(timerValue);
-
 	}
 
 	/**
@@ -45,8 +46,7 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void onTimerRunsOut() {
-		TrainContext.getInstance().changeState(DoorsClosedState.getInstance());
-
+		TrainContext.getInstance().changeState(DepartingStationState.getInstance());
 	}
 	
 	/**
@@ -55,11 +55,11 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	@Override
 	public void onDoorObstruction() {
 		double openTime = (5 - timer.getTimeValue()) * 0.8;
-		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance((int)openTime));
+		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance((int)openTime, true));
 	}
 
 	/**
-	 * when the state is entered. It takes 5s for the doors to close
+	 * When the state is entered. It takes 5s for the doors to close
 	 */
 	@Override
 	public void enter() {
@@ -69,12 +69,11 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * when the state is entered. Stops and resets timer.
+	 * When the state is exited. Stops and sets timer to null.
 	 */
 	@Override
 	public void exit() {
 		timer.stop();
 		timer = null;
 	}
-
 }

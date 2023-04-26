@@ -4,9 +4,15 @@ import edu.ics372.gp2.train.states.TrainContext;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * This class represents the StationReachingButton
+ * 
+ * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
+ */
 public class StationReachingButton extends GUIButton implements EventHandler<ActionEvent> {
+	
 	/**
-	 * the constructor to make StationReachingButton
+	 * The constructor to make StationReachingButton
 	 * 
 	 * @param the text on button when it made
 	 */
@@ -15,9 +21,7 @@ public class StationReachingButton extends GUIButton implements EventHandler<Act
 	}
 
 	/*
-	 * the eventHandler to let trainStateContext knows when button is pressed
-	 * 
-	 * @param ActionEvent is the StationReaching Button is clicked
+	 * The eventHandler to let TrainContext knows when button is pressed
 	 */
 	@Override
 	public void handle(ActionEvent arg0) {

@@ -4,36 +4,37 @@ import edu.ics372.gp2.train.timer.Notifiable;
 import edu.ics372.gp2.train.timer.Timer;
 
 /**
- * This class represent the state when the train is stopped
+ * This class represents the state when the train has arrived at the station
  * 
  * @author Uyen Ngo, Tai Vu, Ethan Lo, Thomas Morgenstern
  */
-public class StoppedState extends TrainState implements Notifiable {
-
-	private static StoppedState instance;
+public class ArrivedStationState extends TrainState implements Notifiable {
+	private static ArrivedStationState instance;
 	private Timer timer;
 
 	/**
 	 * Private constructor for the singleton pattern
 	 */
-	private StoppedState() {
+	private ArrivedStationState() {
 		instance = this;
 	}
 
 	/**
-	 * creating instance then returning it
+	 * Creating instance if needed then returning it
 	 * 
 	 * @return the instance
 	 */
-	public static StoppedState getInstance() {
+	public static ArrivedStationState getInstance() {
 		if (instance == null) {
-			instance = new StoppedState();
+			instance = new ArrivedStationState();
 		}
 		return instance;
-	} // end getInstance()
+	}
 
 	/**
 	 * Process timer tick event
+	 * 
+	 * @param time remaining in timer
 	 */
 	@Override
 	public void OnTimerTick(int timerValue) {
@@ -45,11 +46,11 @@ public class StoppedState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void onTimerRunsOut() {
-		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance(4));
+		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance(4, false));
 	}
 
 	/**
-	 * for when the state is entered. 1 second after the train stops, the doors of
+	 * For when the state is entered. 1 second after the train stops, the doors of
 	 * the train start opening
 	 */
 	@Override
@@ -60,13 +61,11 @@ public class StoppedState extends TrainState implements Notifiable {
 	}
 
 	/**
-	 * for when the state is exit. Shows train is completely stopped and reset timer
+	 * For when the state is exited. Stops the timer and sets it to null
 	 */
 	@Override
 	public void exit() {
-		TrainContext.getInstance().showTrainStopped();
 		timer.stop();
 		timer = null;
 	}
-
 }
