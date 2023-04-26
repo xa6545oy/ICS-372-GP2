@@ -16,7 +16,7 @@ public class TrainContext {
 	 * Make a singleton
 	 */
 	public TrainContext() {
-		instance = null;
+		instance = this;
 		currentState = AcceleratingState.getInstance();
 	}
 

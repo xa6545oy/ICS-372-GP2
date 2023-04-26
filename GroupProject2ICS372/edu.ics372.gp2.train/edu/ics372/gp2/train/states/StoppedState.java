@@ -45,7 +45,7 @@ public class StoppedState extends TrainState implements Notifiable {
 	 */
 	@Override
 	public void onTimerRunsOut() {
-		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance());
+		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance(4));
 	}
 
 	/**

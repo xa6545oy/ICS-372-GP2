@@ -48,13 +48,14 @@ public class DoorsClosingState extends TrainState implements Notifiable {
 		TrainContext.getInstance().changeState(DoorsClosedState.getInstance());
 
 	}
-
+	
 	/**
 	 * Process obstruction of the doors
 	 */
 	@Override
 	public void onDoorObstruction() {
-		TrainContext.getInstance().changeState(DoorsObstructingState.getInstance(timer.getTimeValue()));
+		double openTime = (5 - timer.getTimeValue()) * 0.8;
+		TrainContext.getInstance().changeState(DoorsOpeningState.getInstance((int)openTime));
 	}
 
 	/**
